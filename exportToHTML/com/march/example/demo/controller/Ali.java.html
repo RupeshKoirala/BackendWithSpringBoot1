@@ -1,0 +1,134 @@
+<html>
+<head>
+<title>Ali.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Ali.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.march.example.demo.controller</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.Scanner</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">Ali {</span>
+    <span class="s0">static char</span><span class="s1">[][] ticTacToe = </span><span class="s0">new char</span><span class="s1">[</span><span class="s2">3</span><span class="s1">][</span><span class="s2">3</span><span class="s1">]</span><span class="s0">;</span>
+
+    <span class="s0">public static void </span><span class="s1">main(String[] args) {</span>
+
+        <span class="s1">getInputForEquals()</span><span class="s0">;</span>
+        <span class="s1">fillBoard()</span><span class="s0">;</span>
+        <span class="s1">drawBoard(ticTacToe)</span><span class="s0">;</span>
+        <span class="s0">boolean </span><span class="s1">wonByX = won(ticTacToe</span><span class="s0">, </span><span class="s3">'X'</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">boolean </span><span class="s1">wonByO = won(ticTacToe</span><span class="s0">, </span><span class="s3">'O'</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s0">if</span><span class="s1">(wonByX){</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;X won the game&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span><span class="s0">else if</span><span class="s1">(wonByO){</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;O won the game&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span><span class="s0">else</span><span class="s1">{</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;It is a draw&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public static void </span><span class="s1">getInputForEquals() {</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Enter the first list size: &quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Scanner input = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">firstListSize = input.nextInt()</span><span class="s0">;</span>
+        <span class="s0">int</span><span class="s1">[] list1 = </span><span class="s0">new int</span><span class="s1">[firstListSize]</span><span class="s0">;</span><span class="s4">//first array</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Enter the first list elements (numbers only): &quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">i &lt; firstListSize</span><span class="s0">; </span><span class="s1">i++) {</span>
+            <span class="s1">list1[i] = Integer.parseInt(input.next())</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Enter the second list size: &quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">secondListSize = input.nextInt()</span><span class="s0">;</span>
+        <span class="s0">int</span><span class="s1">[] list2 = </span><span class="s0">new int</span><span class="s1">[secondListSize]</span><span class="s0">;</span><span class="s4">//first array</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Enter the second list elements (numbers only): &quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">i &lt; secondListSize</span><span class="s0">; </span><span class="s1">i++) {</span>
+            <span class="s1">list2[i] = Integer.parseInt(input.next())</span><span class="s0">;</span>
+        <span class="s1">}</span>
+
+        <span class="s0">boolean </span><span class="s1">isEquals = equals(list1</span><span class="s0">, </span><span class="s1">list2)</span><span class="s0">;</span>
+        <span class="s0">if </span><span class="s1">(isEquals) {</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;They are equal&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;They aren't equal&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public static boolean </span><span class="s1">equals(</span><span class="s0">int</span><span class="s1">[] list1</span><span class="s0">, int</span><span class="s1">[] list2) {</span>
+
+        <span class="s0">if </span><span class="s1">(list1.length &gt; </span><span class="s2">0 </span><span class="s1">&amp;&amp; list2.length &gt; </span><span class="s2">0</span><span class="s1">) {</span>
+            <span class="s0">if </span><span class="s1">(list1.length == list2.length) {</span>
+                <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">i &lt; list1.length</span><span class="s0">; </span><span class="s1">i++) {</span>
+                    <span class="s0">if </span><span class="s1">(list1[i] != list2[i]) {</span>
+                        <span class="s0">return false;</span>
+                    <span class="s1">}</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s0">return true;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public static void </span><span class="s1">fillBoard() {</span>
+        <span class="s1">String value = </span><span class="s0">null;</span>
+        <span class="s1">Scanner input = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s0">;</span>
+        <span class="s0">do </span><span class="s1">{</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;Enter 'X' or 'O' with position. Press E to exit!&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">value = input.next()</span><span class="s0">;</span>
+            <span class="s0">if </span><span class="s1">(!value.equalsIgnoreCase(</span><span class="s3">&quot;e&quot;</span><span class="s1">)) {</span>
+                <span class="s1">System.out.println(</span><span class="s3">&quot;Enter x position (0, 1, 2)&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s0">int </span><span class="s1">xPosition = input.nextInt()</span><span class="s0">;</span>
+                <span class="s1">System.out.println(</span><span class="s3">&quot;Enter y position (0, 1, 2)&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s0">int </span><span class="s1">yPosition = input.nextInt()</span><span class="s0">;</span>
+                <span class="s1">ticTacToe[xPosition][yPosition] = value.toUpperCase().charAt(</span><span class="s2">0</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">} </span><span class="s0">while </span><span class="s1">(value.equalsIgnoreCase(</span><span class="s3">&quot;e&quot;</span><span class="s1">))</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public static void </span><span class="s1">drawBoard(</span><span class="s0">char</span><span class="s1">[][] board) {</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;___________&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">i &lt; board.length</span><span class="s0">; </span><span class="s1">i++) {</span>
+            <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">j = </span><span class="s2">0</span><span class="s0">; </span><span class="s1">j &lt; board[i].length</span><span class="s0">; </span><span class="s1">j++) {</span>
+                <span class="s1">System.out.println(board[i][j] + </span><span class="s3">&quot;|&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">---------&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public static boolean </span><span class="s1">won(</span><span class="s0">char</span><span class="s1">[][] board</span><span class="s0">, char </span><span class="s1">which) {</span>
+        <span class="s0">if </span><span class="s1">(board[</span><span class="s2">0</span><span class="s1">][</span><span class="s2">0</span><span class="s1">] == which &amp;&amp; board[</span><span class="s2">0</span><span class="s1">][</span><span class="s2">1</span><span class="s1">] == which &amp;&amp; board[</span><span class="s2">0</span><span class="s1">][</span><span class="s2">2</span><span class="s1">] == which) {</span>
+            <span class="s0">return true;</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(board[</span><span class="s2">1</span><span class="s1">][</span><span class="s2">0</span><span class="s1">] == which &amp;&amp; board[</span><span class="s2">1</span><span class="s1">][</span><span class="s2">1</span><span class="s1">] == which &amp;&amp; board[</span><span class="s2">1</span><span class="s1">][</span><span class="s2">2</span><span class="s1">] == which) {</span>
+            <span class="s0">return true;</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(board[</span><span class="s2">2</span><span class="s1">][</span><span class="s2">0</span><span class="s1">] == which &amp;&amp; board[</span><span class="s2">2</span><span class="s1">][</span><span class="s2">1</span><span class="s1">] == which &amp;&amp; board[</span><span class="s2">2</span><span class="s1">][</span><span class="s2">2</span><span class="s1">] == which) {</span>
+            <span class="s0">return true;</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(board[</span><span class="s2">0</span><span class="s1">][</span><span class="s2">0</span><span class="s1">] == which &amp;&amp; board[</span><span class="s2">1</span><span class="s1">][</span><span class="s2">0</span><span class="s1">] == which &amp;&amp; board[</span><span class="s2">2</span><span class="s1">][</span><span class="s2">0</span><span class="s1">] == which) {</span>
+            <span class="s0">return true;</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(board[</span><span class="s2">0</span><span class="s1">][</span><span class="s2">1</span><span class="s1">] == which &amp;&amp; board[</span><span class="s2">1</span><span class="s1">][</span><span class="s2">1</span><span class="s1">] == which &amp;&amp; board[</span><span class="s2">2</span><span class="s1">][</span><span class="s2">1</span><span class="s1">] == which) {</span>
+            <span class="s0">return true;</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(board[</span><span class="s2">0</span><span class="s1">][</span><span class="s2">2</span><span class="s1">] == which &amp;&amp; board[</span><span class="s2">1</span><span class="s1">][</span><span class="s2">2</span><span class="s1">] == which &amp;&amp; board[</span><span class="s2">2</span><span class="s1">][</span><span class="s2">2</span><span class="s1">] == which) {</span>
+            <span class="s0">return true;</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(board[</span><span class="s2">0</span><span class="s1">][</span><span class="s2">0</span><span class="s1">] == which &amp;&amp; board[</span><span class="s2">1</span><span class="s1">][</span><span class="s2">1</span><span class="s1">] == which &amp;&amp; board[</span><span class="s2">2</span><span class="s1">][</span><span class="s2">2</span><span class="s1">] == which) {</span>
+            <span class="s0">return true;</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(board[</span><span class="s2">0</span><span class="s1">][</span><span class="s2">2</span><span class="s1">] == which &amp;&amp; board[</span><span class="s2">1</span><span class="s1">][</span><span class="s2">1</span><span class="s1">] == which &amp;&amp; board[</span><span class="s2">2</span><span class="s1">][</span><span class="s2">0</span><span class="s1">] == which) {</span>
+            <span class="s0">return true;</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s0">return false;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
